@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--声明版本是html5-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+</head>
+
+<!-- 直接定义一个通用样式，在元素中用class选用它
+1: 关于定位，absolute 总是跟relative一起用，是参照距离最近的祖先元素
+2： 定位单独一个元素，直接relative,加top left height,width就行，元素可能会相互重叠
+3: style也可以写在头部，用css语法分别定义元素样式
+4: style也可以直接在元素属性里指定， 类似，<h2 style="background-color:red;font-family:arial;color:orange;font-size:15px;text-align:center/left"> Jordan </h2>
+<style type="text/css">
+h1 {color:red}
+p {color:blue}
+</style>
+-->
+<style>
+  .cent {
+    width: 900px;
+    height: 600px;
+    position: relative;
+    background-color:  green;
+    top: 400px;
+    left: 700px;
+  }
+  .left {
+    top:200px;
+    left:900px;
+    background-color: azure;
+    position: relative;
+
+
+  }
+
+</style>
+
+<body>
+<h1>所有用户信息</h1>
+<h2 style="background-color:red;font-family:arial;color:orange;font-size:50px;text-align:center"> Summer Leaves </h2>
+<table border="1" class="left">
+  <!-- 表头部分，有5列 -->
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>City</th>
+    <th>Option</th>
+
+  </tr>
+  </thead>
+  <tbody>
+<!--  循环传进来的dict对象，填充表格，每次写一行,填充到5个字段里-->
+  {% for key,value in data_dict.items() %}
+  <tr>
+    <td>{{key}}</td>
+    <td>{{value.name}}</td>
+    <td>{{value.age}}</td>
+    <td>{{value.city}}</td>
+    <td>
+      <a href="/edit?nid={{key}}">编辑</a>
+      <a href="/dele?nid={{key}}">删除</a>
+    </td>
+
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<!--<video  controls="controls"  class="cent"> sorry, html5 not supported-->
+<!--  <source src="vid.mp4" type="video/mp4" >-->
+
+<!--</video>-->
+
+
+
+</body>
+</html>
+

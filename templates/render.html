@@ -1,0 +1,9 @@
+<!--在本文件中分别引用其它模板里的内容和元素，避免重写-->
+{% extends '001.html' %}
+
+{% block content %}
+<h1>引用 content from 002.html</h1>
+{% include 'form.html' %}
+{{ g1() }}<br></br>
+{{ '乔丹'|f1() }}
+{% endblock %}
